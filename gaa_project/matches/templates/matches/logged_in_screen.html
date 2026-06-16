@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GAA Manager logged </title>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>GAA Manager</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>You are logged in</h2>
+        {% if user.is_authenticated %}
+    <p>Welcome {{ user.username }}</p>
+    <a href="/accounts/logout/">Logout</a>
+{% else %}
+    <a href="/accounts/login/">Login</a>
+{% endif %}
+    </section>
+    
+    </ul>
+    <!-- Footer -->
+    <footer>
+        <p>Standard Irishman 2026</p>
+    </footer>
+
+</body>
+</html>
+   

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GAA Manager</title>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>GAA Manager</h1>
+        <nav>
+            <a href="#about">About</a>
+
+           {% if user.is_authenticated %}
+             <span>Welcome {{ user.username }}</span>
+              <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+               <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'signup' %}">Sign Up</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About</h2>
+        <p>Welcome to GAA Manager. This platform helps manage teams, players, and fixtures for Gaelic games.</p>
+    </section>
+
+    <!-- Matches -->
+    <h1>Upcoming Matches</h1>
+    <ul>
+    {% for match in matches %}
+        <li>
+            {{ match.home_team }} {{ match.home_score }} - 
+            {{ match.away_score }} {{ match.away_team }} 
+            on {{ match.match_date }}
+        </li>
+    {% empty %}
+        <li>No matches scheduled.</li>
+    {% endfor %}
+    </ul>
+
+    <!-- Footer -->
+    <footer>
+        <p>Standard Irishman 2026</p>
+    </footer>
+
+</body>
+</html>
